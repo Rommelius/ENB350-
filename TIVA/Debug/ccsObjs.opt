@@ -1,0 +1,1 @@
+"./main.o" "./drivers/frame.o" "./drivers/kentec320x240x16_ssd2119.o" "./drivers/mx66l51235f.o" "./drivers/pinout.o" "./drivers/sound.o" "./drivers/touch.o" -Wl,-T"../TM4C129XNCZAD.lds" -Wl,-T"configPkg/linker.cmd" -Wl,--start-group -l"gcc" -l"driver" -l"m" -l"nosys" -l"c" -l"gr" -Wl,--end-group 
