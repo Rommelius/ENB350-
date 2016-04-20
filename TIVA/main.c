@@ -1,26 +1,3 @@
-// test by Amelia
-
-// test by Rommel
-
-
-// test by Rommel
-
-// test by sagar
-
-//test 1234
-//test rommel
-
-// test by sagar
-//test by rommel after fix
-
-//test shervin
-
-//test by ameliaaaaaa
-
-
-//amelia test 2
-
-// test by Rommel 2:07pm
 /*
  *  ======== main.c ========
  */
