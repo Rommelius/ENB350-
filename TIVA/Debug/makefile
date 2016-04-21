@@ -20,12 +20,12 @@ ORDERED_OBJS += \
 -Wl,-T"../TM4C129XNCZAD.lds" \
 $(GEN_CMDS__FLAG) \
 -Wl,--start-group \
--l"gcc" \
--l"driver" \
--l"m" \
--l"nosys" \
 -l"c" \
 -l"gr" \
+-l"driver" \
+-l"gcc" \
+-l"m" \
+-l"nosys" \
 -Wl,--end-group \
 
 -include ../makefile.init
@@ -132,32 +132,32 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-TIVA.out \
+minimal_TivaTM4C129XNCZAD.out \
 
 EXE_OUTPUTS__QUOTED += \
-"TIVA.out" \
+"minimal_TivaTM4C129XNCZAD.out" \
 
 BIN_OUTPUTS += \
-TIVA.hex \
+minimal_TivaTM4C129XNCZAD.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"TIVA.hex" \
+"minimal_TivaTM4C129XNCZAD.hex" \
 
 
 # All Target
-all: TIVA.out
+all: minimal_TivaTM4C129XNCZAD.out
 
 # Tool invocations
-TIVA.out: $(OBJS) $(LDS_SRCS) $(GEN_CMDS)
+minimal_TivaTM4C129XNCZAD.out: $(OBJS) $(LDS_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU Linker'
-	"C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-gcc.exe" -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C129XNCZAD -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -Wl,-Map,"TIVA.map" -nostartfiles -static -Wl,--gc-sections -L"C:/ti/tirtos_tivac_2_12_01_33/products/bios_6_41_04_54/packages/gnu/targets/arm/libs/install-native/arm-none-eabi/lib/armv7e-m/fpu" -L"C:/ti/tirtos_tivac_2_12_01_33/products/TivaWare_C_Series-2.1.0.12573c/driverlib/gcc" -L"C:/ti/tirtos_tivac_2_12_01_33/products/TivaWare_C_Series-2.1.0.12573c/grlib/gcc" -o"TIVA.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-gcc.exe" -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C129XNCZAD -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -Wl,-Map,"minimal_TivaTM4C129XNCZAD.map" -nostartfiles -static -Wl,--gc-sections -L"/packages/gnu/targets/arm/libs/install-native/arm-none-eabi/lib/armv7e-m/fpu" -L"/products/TivaWare_C_Series-2.1.0.12573c/grlib/gcc" -L"/products/TivaWare_C_Series-2.1.0.12573c/driverlib/gcc" -o"minimal_TivaTM4C129XNCZAD.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-TIVA.hex: $(EXE_OUTPUTS)
+minimal_TivaTM4C129XNCZAD.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: GNU Objcopy Utility'
-	"C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-objcopy.exe"  $(EXE_OUTPUTS__QUOTED) "TIVA.hex"
+	"C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-objcopy.exe"  $(EXE_OUTPUTS__QUOTED) "minimal_TivaTM4C129XNCZAD.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 

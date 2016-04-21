@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -l"gcc" -l"driver" -l"m" -l"nosys" -l"c" -l"gr"
+LIBS := -l"c" -l"gr" -l"driver" -l"gcc" -l"m" -l"nosys"
 
