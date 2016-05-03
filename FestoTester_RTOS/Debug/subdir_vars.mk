@@ -1,0 +1,56 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+LDS_SRCS += \
+../TM4C129XNCZAD.lds 
+
+CFG_SRCS += \
+../app.cfg 
+
+C_SRCS += \
+../main.c 
+
+OBJS += \
+./main.o 
+
+C_DEPS += \
+./main.d 
+
+GEN_MISC_DIRS += \
+./configPkg/ 
+
+GEN_CMDS += \
+./configPkg/linker.cmd 
+
+GEN_OPTS += \
+./configPkg/compiler.opt 
+
+GEN_FILES += \
+./configPkg/linker.cmd \
+./configPkg/compiler.opt 
+
+GEN_FILES__QUOTED += \
+"configPkg\linker.cmd" \
+"configPkg\compiler.opt" 
+
+GEN_MISC_DIRS__QUOTED += \
+"configPkg\" 
+
+C_DEPS__QUOTED += \
+"main.d" 
+
+OBJS__QUOTED += \
+"main.o" 
+
+GEN_CMDS__FLAG += \
+-Wl,-T"./configPkg/linker.cmd" 
+
+GEN_OPTS__FLAG += \
+@"./configPkg/compiler.opt" 
+
+C_SRCS__QUOTED += \
+"../main.c" 
+
+
