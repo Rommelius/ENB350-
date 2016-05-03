@@ -2,14 +2,16 @@
  *  ======== main.c ========
  */
 
+//XDC Tools
 #include <xdc/std.h>
 
 #include <xdc/runtime/Error.h>
 #include <xdc/runtime/System.h>
 
+//BIOS Header Files
 #include <ti/sysbios/BIOS.h>
-
 #include <ti/sysbios/knl/Task.h>
+	//do we need semaphore one here?
 
 #define ADC_SEQ_NUM	0
 
@@ -31,12 +33,14 @@
 
 #define INPUT_STATUS_IS_ONE	1
 
-
+//Kentec Screen (Graphics) Header Files
 #include <stdbool.h>
 #include <stdint.h>
+	//what are these?
 #include "inc/hw_memmap.h"
 #include "inc/tm4c129xnczad.h"
 
+//TI-RTOS Header Files
 #include "driverlib/adc.h"
 #include "driverlib/gpio.h"
 #include "driverlib/rom.h"
@@ -56,12 +60,10 @@
 #include "drivers/pinout.h"
 #include "drivers/touch.h"
 
-
+//Festo testing header; has UART and GPIO fxs
 #include "qut_tiva.h"
 
-
-
-
+//Global Variables
 uint32_t input_status[8];
 
 uint32_t adc0_read;
@@ -220,23 +222,19 @@ OnIntroPaint(tWidget *psWidget, tContext *psContext)
 	GrStringDraw(psContext, "ANALOG", 	-1, 130, LOC_Y_ANALOG-30, 0);
 
 	//Draw two rectangles, one filled left to right up to the analog value then an empty one to contain the information
-    GrContextForegroundSet(psContext, ClrMidnightBlue);
+    GrContextForegroundSet(psContext, ClrMidnightBlue);	//background rectangle
     sRect.i16XMin = 20;
 	sRect.i16XMax = 300;
 	sRect.i16YMin = LOC_Y_ANALOG-10;
 	sRect.i16YMax = LOC_Y_ANALOG+8;
     GrRectFill(psContext, &sRect);
 
-    GrContextForegroundSet(psContext, ClrCyan);
+    GrContextForegroundSet(psContext, ClrCyan);	//filler rectangle
 	sRect.i16XMin = 20;
     sRect.i16XMax = num_analog_pixels + sRect.i16XMin;
 	sRect.i16YMin = LOC_Y_ANALOG-10;
 	sRect.i16YMax = LOC_Y_ANALOG+8;
     GrRectFill(psContext, &sRect);
-
-
-
-
 
 }
 
@@ -260,7 +258,7 @@ CircularButton	(	g_sPushBtn_1, &g_sBackground, 0, 0, &g_sKentec320x240x16_SSD211
 					g_psFontCmss22b, "0", 0, 0, 0, 0, OnButtonPress_1 );
 
 CircularButton	(	g_sPushBtn_2, &g_sBackground, 0, 0, &g_sKentec320x240x16_SSD2119,
-					LOC_X_2, LOC_Y_0UTPUTS, 15,															//x,y,radius
+					LOC_X_2, LOC_Y_0UTPUTS, 15,																//x,y,radius
 					(PB_STYLE_OUTLINE | PB_STYLE_TEXT_OPAQUE | PB_STYLE_TEXT |
 					PB_STYLE_FILL | PB_STYLE_RELEASE_NOTIFY),
 					ClrDarkBlue, ClrBlue, ClrWhite, ClrWhite,
@@ -336,11 +334,11 @@ __error__(char *pcFilename, uint32_t ui32Line)
 //*****************************************************************************
 void OnButtonPress_0(tWidget *psWidget)
 {
-    g_bHelloVisible_0 = !g_bHelloVisible_0;
+    g_bHelloVisible_0 = !(g_bHelloVisible_0);		//output is !output so if output is true
 
-    if(g_bHelloVisible_0)
+    if(g_bHelloVisible_0)	//if output is true
     {
-        PushButtonTextSet(&g_sPushBtn_0, "1");
+        PushButtonTextSet(&g_sPushBtn_0, "1");	//
         WidgetPaint(WIDGET_ROOT);
 		qut_set_gpio( 0, 1 );
     }
@@ -359,17 +357,13 @@ void OnButtonPress_1 (tWidget *psWidget)
     if(g_bHelloVisible_1)
     {
         PushButtonTextSet(&g_sPushBtn_1, "1");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 1, 1 );
     }
     else
     {
         PushButtonTextSet(&g_sPushBtn_1, "0");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 1, 0 );
     }
 }
@@ -381,17 +375,13 @@ void OnButtonPress_2 (tWidget *psWidget)
     if(g_bHelloVisible_2)
     {
         PushButtonTextSet(&g_sPushBtn_2, "1");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 2, 1 );
     }
     else
     {
         PushButtonTextSet(&g_sPushBtn_2, "0");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 2, 0 );
     }
 }
@@ -403,17 +393,13 @@ void OnButtonPress_3 (tWidget *psWidget)
     if(g_bHelloVisible_3)
     {
         PushButtonTextSet(&g_sPushBtn_3, "1");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 3, 1 );
     }
     else
     {
         PushButtonTextSet(&g_sPushBtn_3, "0");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 3, 0 );
     }
 }
@@ -442,17 +428,13 @@ void OnButtonPress_5 (tWidget *psWidget)
     if(g_bHelloVisible_5)
     {
         PushButtonTextSet(&g_sPushBtn_5, "1");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 5, 1 );
     }
     else
     {
         PushButtonTextSet(&g_sPushBtn_5, "0");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 5, 0 );
     }
 }
@@ -464,17 +446,13 @@ void OnButtonPress_6 (tWidget *psWidget)
     if(g_bHelloVisible_6)
     {
         PushButtonTextSet(&g_sPushBtn_6, "1");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 6, 1 );
     }
     else
     {
         PushButtonTextSet(&g_sPushBtn_6, "0");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 6, 0 );
     }
 }
@@ -486,21 +464,16 @@ void OnButtonPress_7 (tWidget *psWidget)
     if(g_bHelloVisible_7)
     {
         PushButtonTextSet(&g_sPushBtn_7, "1");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 7, 1 );
     }
     else
     {
         PushButtonTextSet(&g_sPushBtn_7, "0");
-
         WidgetPaint(WIDGET_ROOT);
-
 		qut_set_gpio( 7, 0 );
     }
 }
-
 
 
 
@@ -509,7 +482,6 @@ void OnButtonPress_7 (tWidget *psWidget)
  */
 Void taskFxn(UArg a0, UArg a1)
 {
-
 
 	//
 	// Run from the PLL at 120 MHz.
@@ -530,7 +502,7 @@ Void taskFxn(UArg a0, UArg a1)
 		//
 		// Process any messages from or for the widgets.
 		//
-		WidgetMessageQueueProcess();
+		WidgetMessageQueueProcess();//WHAT IS THIS
 
 
 		//Turn on RED LED
@@ -540,7 +512,7 @@ Void taskFxn(UArg a0, UArg a1)
 		for( i = 0; i < 8; i++ )
 		{
 			input_status[i] = 0;
-			reg_read		= qut_get_gpio( i );
+			reg_read		= qut_get_gpio( i );	//
 
 			if ( reg_read != 0 ){
 				input_status[i] = INPUT_STATUS_IS_ONE;
@@ -558,14 +530,10 @@ Void taskFxn(UArg a0, UArg a1)
 		num_analog_pixels = (adc0_read * 280 ) / 4096;
 
 
-
-
-
 		//UARTprintf("num_analog_pixels = %4d\r", num_analog_pixels );
 
 		//QUT_UART_Send( (uint8_t *)"\rnum_analog_pixels=", 19 );
 		//QUT_UART_Send_uint32_t( num_analog_pixels );
-
 
 
 		//qut_delay_secs(1);
@@ -594,7 +562,6 @@ Int main()
     }
 
     ui32SysClock = 120000000;
-
 
     	//
     	// Configure the device pins.

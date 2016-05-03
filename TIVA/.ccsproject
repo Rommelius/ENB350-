@@ -12,5 +12,5 @@
 	<createSlaveProjects value=""/>
 	<origin value="C:\ti\tirtos_tivac_2_12_01_33\resources\kernelExamples\gnuTargetExamples\com_ti_rtsc_tirtostivac_example_188.projectspec"/>
 	<templateProperties value="id=com_ti_rtsc_tirtostivac_example_188.projectspec.minimal_TivaTM4C129XNCZAD,type=rtsc,products=com.ti.rtsc.TIRTOStivac,target=gnu.targets.arm.M4F,platform=ti.platforms.tiva:$DeviceId$,buildProfile=release,isHybrid=true,"/>
-	<isTargetManual value="false"/>
+	<isTargetManual value="true"/>
 </projectOptions>
