@@ -13,10 +13,10 @@ C_DEPS += \
 ./utils/ustdlib.d 
 
 C_DEPS__QUOTED += \
-"utils\ustdlib.d" 
+"utils/ustdlib.d" 
 
 OBJS__QUOTED += \
-"utils\ustdlib.o" 
+"utils/ustdlib.o" 
 
 C_SRCS__QUOTED += \
 "../utils/ustdlib.c" 
