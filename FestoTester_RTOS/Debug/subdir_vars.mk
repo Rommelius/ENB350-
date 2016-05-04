@@ -32,23 +32,17 @@ GEN_FILES += \
 ./configPkg/compiler.opt 
 
 GEN_FILES__QUOTED += \
-"configPkg\linker.cmd" \
-"configPkg\compiler.opt" 
+"configPkg/linker.cmd" \
+"configPkg/compiler.opt" 
 
 GEN_MISC_DIRS__QUOTED += \
-"configPkg\" 
+"configPkg/" 
 
 C_DEPS__QUOTED += \
 "main.d" 
 
 OBJS__QUOTED += \
 "main.o" 
-
-GEN_CMDS__FLAG += \
--Wl,-T"./configPkg/linker.cmd" 
-
-GEN_OPTS__FLAG += \
-@"./configPkg/compiler.opt" 
 
 C_SRCS__QUOTED += \
 "../main.c" 

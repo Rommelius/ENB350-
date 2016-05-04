@@ -2,42 +2,69 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-SHELL = cmd.exe
+CG_TOOL_ROOT := /opt/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_9-2015q3
 
-CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_8-2014q3
+GEN_OPTS__FLAG := @"configPkg/compiler.opt"
+GEN_CMDS__FLAG := -Wl,-T"configPkg/linker.cmd"
 
 ORDERED_OBJS += \
 "./main.o" \
-"./utils/ustdlib.o" \
 "./drivers/frame.o" \
 "./drivers/kentec320x240x16_ssd2119.o" \
 "./drivers/mx66l51235f.o" \
 "./drivers/pinout.o" \
 "./drivers/touch.o" \
+"../src/sysbios/_BIOS.o" \
+"../src/sysbios/gates_GateHwi.o" \
+"../src/sysbios/gates_GateMutex.o" \
+"../src/sysbios/gnu_ReentSupport.o" \
+"../src/sysbios/hal_Hwi.o" \
+"../src/sysbios/hal_Hwi_stack.o" \
+"../src/sysbios/hal_Hwi_startup.o" \
+"../src/sysbios/heaps_HeapMem.o" \
+"../src/sysbios/knl_Clock.o" \
+"../src/sysbios/knl_Idle.o" \
+"../src/sysbios/knl_Intrinsics.o" \
+"../src/sysbios/knl_Queue.o" \
+"../src/sysbios/knl_Semaphore.o" \
+"../src/sysbios/knl_Swi.o" \
+"../src/sysbios/knl_Swi_andn.o" \
+"../src/sysbios/knl_Task.o" \
+"../src/sysbios/lm4_Timer.o" \
+"../src/sysbios/lm4_TimestampProvider.o" \
+"../src/sysbios/m3_Hwi.o" \
+"../src/sysbios/m3_Hwi_asm_gnu.o" \
+"../src/sysbios/m3_Hwi_asm_switch_gnu.o" \
+"../src/sysbios/m3_IntrinsicsSupport_asm_gnu.o" \
+"../src/sysbios/m3_TaskSupport.o" \
+"../src/sysbios/m3_TaskSupport_asm_gnu.o" \
+"./utils/ustdlib.o" \
 -Wl,-T"../TM4C129XNCZAD.lds" \
 $(GEN_CMDS__FLAG) \
 -Wl,--start-group \
--l"gcc" \
--l"gr" \
--l"driver" \
--l"c" \
--l"m" \
--l"nosys" \
+-lgcc \
+-lgr \
+-ldriver \
+-lc \
+-lm \
+-lnosys \
 -Wl,--end-group \
 
 -include ../makefile.init
 
-RM := DEL /F
-RMDIR := RMDIR /S/Q
+RM := rm -rf
+RMDIR := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
--include utils/subdir_vars.mk
 -include drivers/subdir_vars.mk
+-include src/sysbios/subdir_vars.mk
+-include utils/subdir_vars.mk
 -include subdir_rules.mk
--include utils/subdir_rules.mk
 -include drivers/subdir_rules.mk
+-include src/sysbios/subdir_rules.mk
+-include utils/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -58,6 +85,9 @@ ifneq ($(strip $(ASM_DEPS)),)
 endif
 ifneq ($(strip $(CC_DEPS)),)
 -include $(CC_DEPS)
+endif
+ifneq ($(strip $(SV7A_DEPS)),)
+-include $(SV7A_DEPS)
 endif
 ifneq ($(strip $(S55_DEPS)),)
 -include $(S55_DEPS)
@@ -150,13 +180,13 @@ all: FestoTester_RTOS.out
 FestoTester_RTOS.out: $(OBJS) $(LDS_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU Linker'
-	"C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-gcc.exe" -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C129XNCZAD -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -Wl,-Map,"FestoTester_RTOS.map" -nostartfiles -static -Wl,--gc-sections -L"C:/ti/tirtos_tivac_2_12_01_33/products/bios_6_41_04_54/packages/gnu/targets/arm/libs/install-native/arm-none-eabi/lib/armv7e-m/fpu" -L"C:/ti/tirtos_tivac_2_12_01_33/products/TivaWare_C_Series-2.1.0.12573c/grlib/gcc" -L"C:/ti/tirtos_tivac_2_12_01_33/products/TivaWare_C_Series-2.1.0.12573c/driverlib/gcc" -o"FestoTester_RTOS.out" $(ORDERED_OBJS)
+	"/opt/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc" -march=armv7e-m -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DPART_TM4C129XNCZAD -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -Wl,-Map,"FestoTester_RTOS.map" -nostartfiles -static -Wl,--gc-sections -L"/opt/ti/tirtos_tivac_2_16_01_14/products/bios_6_41_04_54/packages/gnu/targets/arm/libs/install-native/arm-none-eabi/lib/armv7e-m/fpu" -L"/opt/ti/tirtos_tivac_2_16_01_14/products/TivaWare_C_Series-2.1.0.12573c/grlib/gcc" -L"/opt/ti/tirtos_tivac_2_16_01_14/products/TivaWare_C_Series-2.1.0.12573c/driverlib/gcc" -o"FestoTester_RTOS.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 FestoTester_RTOS.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: GNU Objcopy Utility'
-	"C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_8-2014q3/bin/arm-none-eabi-objcopy.exe"  $(EXE_OUTPUTS__QUOTED) "FestoTester_RTOS.hex"
+	"/opt/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-objcopy"  $(EXE_OUTPUTS__QUOTED) "FestoTester_RTOS.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
@@ -164,8 +194,8 @@ FestoTester_RTOS.hex: $(EXE_OUTPUTS)
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_OPTS__QUOTED)$(GEN_CMDS__QUOTED)
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
-	-$(RM) "main.d" "utils\ustdlib.d" "drivers\frame.d" "drivers\kentec320x240x16_ssd2119.d" "drivers\mx66l51235f.d" "drivers\pinout.d" "drivers\touch.d" 
-	-$(RM) "main.o" "utils\ustdlib.o" "drivers\frame.o" "drivers\kentec320x240x16_ssd2119.o" "drivers\mx66l51235f.o" "drivers\pinout.o" "drivers\touch.o" 
+	-$(RM) "main.d" "drivers/frame.d" "drivers/kentec320x240x16_ssd2119.d" "drivers/mx66l51235f.d" "drivers/pinout.d" "drivers/touch.d" "utils/ustdlib.d" 
+	-$(RM) "main.o" "drivers/frame.o" "drivers/kentec320x240x16_ssd2119.o" "drivers/mx66l51235f.o" "drivers/pinout.o" "drivers/touch.o" "utils/ustdlib.o" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

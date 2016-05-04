@@ -25,18 +25,18 @@ C_DEPS += \
 ./drivers/touch.d 
 
 C_DEPS__QUOTED += \
-"drivers\frame.d" \
-"drivers\kentec320x240x16_ssd2119.d" \
-"drivers\mx66l51235f.d" \
-"drivers\pinout.d" \
-"drivers\touch.d" 
+"drivers/frame.d" \
+"drivers/kentec320x240x16_ssd2119.d" \
+"drivers/mx66l51235f.d" \
+"drivers/pinout.d" \
+"drivers/touch.d" 
 
 OBJS__QUOTED += \
-"drivers\frame.o" \
-"drivers\kentec320x240x16_ssd2119.o" \
-"drivers\mx66l51235f.o" \
-"drivers\pinout.o" \
-"drivers\touch.o" 
+"drivers/frame.o" \
+"drivers/kentec320x240x16_ssd2119.o" \
+"drivers/mx66l51235f.o" \
+"drivers/pinout.o" \
+"drivers/touch.o" 
 
 C_SRCS__QUOTED += \
 "../drivers/frame.c" \

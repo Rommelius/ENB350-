@@ -2,7 +2,5 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-USER_OBJS :=
-
-LIBS := -lgcc -lgr -ldriver -lc -lm -lnosys
+# Each subdirectory must supply rules for building sources it contributes
 
