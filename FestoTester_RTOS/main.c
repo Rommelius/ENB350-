@@ -546,6 +546,27 @@ Void taskFxn(UArg a0, UArg a1)
 	}
 }
 
+
+/*
+ * ========= Part A =========
+ */
+
+void downCylinder{	//PL0
+	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_0, GPIO_PIN_0);	//THIS MOVES PLATFORM DOWN
+}
+
+void upCylinder{	//PL1
+	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_1, GPIO_PIN_1);	//THIS MOVES PLATFORM UP
+}
+
+void ejectCylinder{	//cylinder eject
+	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_2, GPIO_PIN_2);	//THIS MOVES PLATFORM UP
+}
+
+void airCompress{
+	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_1, GPIO_PIN_1);	//THIS MOVES PLATFORM UP
+}
+
 /*
  *  ======== main ========
  */
